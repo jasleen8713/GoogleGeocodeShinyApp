@@ -1,4 +1,4 @@
-shinyServer(function(input, output, session){
+function(input, output, session){
   
   observeEvent(input$text,{
     hide(id = "mapBoxdiv", anim = TRUE)
@@ -43,4 +43,4 @@ shinyServer(function(input, output, session){
     })
     
   })
-})
+}

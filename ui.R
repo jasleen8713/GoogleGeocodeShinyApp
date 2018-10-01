@@ -1,3 +1,5 @@
+#Using Google Geocode API and googleway R package to dispaly the searched location on map and fetch the geocode information.
+
 library(shiny)
 library(googleway)
 library(shinydashboard)
@@ -5,17 +7,14 @@ library(shinyjs)
 library(httr) #for api call
 library(jsonlite) # for api call
 
-shinyUI(fluidPage(
-  
-  tags$head(
-    tags$style(HTML("
+fluidPage(
+tags$head(
+tags$style(HTML("
 @import url('//fonts.googleapis.com/css?family=Roboto');
 h1{
 font-family: 'Roboto';
 color: #48ca3b;
 }
-
-
 "))
 ),
   
@@ -26,7 +25,7 @@ color: #48ca3b;
     sidebarPanel(
       textInput("text", label = h5("Enter API Key"), value = "", width="400px"),
       textInput("address", label = h5("Type address"), value = "", width="400px"),
-      actionButton("buttonGetGeocode","Get Geo Code", style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
+      actionButton("buttonGetGeocode","Get GeoCode", style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
       br(),
       br(),
       br(),
@@ -44,9 +43,6 @@ color: #48ca3b;
           verbatimTextOutput("printGeoCodes",placeholder = TRUE),
           box(id = "mapBox", width = "1000px", height="1000px", google_mapOutput(outputId = "map")))
     )
-  )
-  
- 
   ))
 
 
